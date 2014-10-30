@@ -145,7 +145,8 @@
 
           </thead>
           <tbody bindonce ng-repeat="event in data| slice:panel.offset:panel.offset+panel.size" ng-class-odd="'odd'">
-            <tr ng-click="toggle_details(event)" class="pointer">
+            <tr ng-click="toggle_details(event)" class="pointer"
+                ng-show="!alert_id || alert_id == event._source.alert_id">
               <td ng-if="panel.fields.length<1" bo-text="event._source|stringify|tableTruncate:panel.trimFactor:1"></td>
               <td ng-show="panel.fields.length>0" ng-repeat="field in panel.fields">
                 <span ng-if="!panel.localTime || panel.timeField != field" bo-html="(event.kibana.highlight[field]||event.kibana._source[field]) |tableHighlight | tableTruncate:panel.trimFactor:panel.fields.length" class="table-field-value"></span>
@@ -155,7 +156,7 @@
                 <i ng-show="alert_id"
                     ng-click="remove_event_filter() || $event.stopPropagation()"
                     class="pointer link icon-arrow-up"
-                    title="Escape alert drilldown."></i>
+                    title="Escape events drilldown."></i>
                 <i ng-show="event._source.alert_id && !alert_id"
                     ng-click="filter_events(event._source.alert_id) || $event.stopPropagation()"
                     class="pointer link icon-arrow-down"
