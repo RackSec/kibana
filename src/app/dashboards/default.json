@@ -320,7 +320,7 @@
           "paging": true,
           "field_list": false,
           "all_fields": false,
-          "trimFactor": 300,
+          "trimFactor": 400,
           "localTime": false,
           "timeField": "@timestamp",
           "spyable": true,
@@ -364,10 +364,6 @@
           "fields": [
             "_type",
             "message.timestamp",
-            "message.ip_src_addr",
-            "message.ip_src_port",
-            "message.ip_dst_addr",
-            "message.ip_dst_port",
             "message.original_string"
           ],
           "highlight": [],
@@ -376,7 +372,7 @@
           "paging": true,
           "field_list": false,
           "all_fields": false,
-          "trimFactor": 300,
+          "trimFactor": 400,
           "localTime": false,
           "timeField": "@timestamp",
           "spyable": true,
