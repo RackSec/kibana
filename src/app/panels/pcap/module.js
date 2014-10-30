@@ -34,7 +34,7 @@ function (angular, app, _, require, kbn) {
         $scope.ip_src_port = message.ip_src_port;
         $scope.ip_dst_addr = message.ip_dst_addr;
         $scope.ip_dst_port = message.ip_dst_port;
-        $scope.ts = message.timestamp * 1000;
+        $scope.ts = message.timestamp;
       }
     });
 
