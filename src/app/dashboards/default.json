@@ -3,8 +3,8 @@
   "services": {
     "query": {
       "list": {
-        "2": {
-          "id": 2,
+        "1": {
+          "id": 1,
           "color": "#6ED0E0",
           "alias": "",
           "pin": false,
@@ -12,32 +12,41 @@
           "enable": true,
           "query": "*"
         },
-        "3": {
-          "id": 3,
-          "color": "#EF843C",
+        "2": {
+          "id": 2,
+          "color": "#BA43A9",
           "alias": "",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "_type:bro_alert"
+          "query": "_type:*_doc"
+        },
+        "3": {
+          "id": 3,
+          "color": "#BA43A9",
+          "alias": "",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "_type:*_alert"
         },
         "4": {
           "id": 4,
-          "color": "#BF1B00",
-          "alias": "",
-          "pin": true,
-          "type": "lucene",
-          "enable": true,
-          "query": "_type:sourcefire_alert"
-        },
-        "5": {
-          "id": 5,
           "color": "#1F78C1",
           "alias": "",
           "pin": true,
           "type": "lucene",
           "enable": true,
           "query": "_type:bro_doc"
+        },
+        "5": {
+          "id": 5,
+          "color": "#EF843C",
+          "alias": "",
+          "pin": true,
+          "type": "lucene",
+          "enable": true,
+          "query": "_type:bro_alert"
         },
         "6": {
           "id": 6,
@@ -50,31 +59,22 @@
         },
         "7": {
           "id": 7,
-          "color": "#BA43A9",
+          "color": "#BF1B00",
           "alias": "",
           "pin": true,
           "type": "lucene",
           "enable": true,
-          "query": "_type:*_doc"
-        },
-        "8": {
-          "id": 8,
-          "color": "#BA43A9",
-          "alias": "",
-          "pin": true,
-          "type": "lucene",
-          "enable": true,
-          "query": "_type:*_alert"
+          "query": "_type:sourcefire_alert"
         }
       },
       "ids": [
+        2,
         3,
         4,
         5,
         6,
         2,
-        7,
-        8
+        7
       ]
     },
     "filter": {
@@ -153,7 +153,7 @@
             "mode": "selected",
             "ids": [
               4,
-              6
+              5
             ]
           },
           "locked": false,
@@ -227,7 +227,8 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              3
+              6,
+              7
             ]
           },
           "locked": false,
@@ -326,7 +327,7 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              8
+              3
             ]
           },
           "locked": false,
@@ -382,7 +383,7 @@
           "queries": {
             "mode": "selected",
             "ids": [
-              7
+              2
             ]
           },
           "locked": false,
