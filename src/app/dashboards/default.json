@@ -68,12 +68,12 @@
         }
       },
       "ids": [
+        1,
         2,
         3,
         4,
         5,
         6,
-        2,
         7
       ]
     },
@@ -206,7 +206,7 @@
             "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "Sourcefire Alerts and Events"
+          "title": "Sourcefire Data"
         },
         {
           "span": 12,
@@ -281,7 +281,7 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Bro Alerts"
+          "title": "Bro Data"
         }
       ],
       "notice": false
