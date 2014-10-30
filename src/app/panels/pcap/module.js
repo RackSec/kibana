@@ -127,13 +127,13 @@ function (angular, app, _, require, kbn) {
       if ($scope.ts) {
         var ts = Date.parse($scope.ts);
         ts = ts > 0 ? ts : parseInt($scope.ts);
-        if (ts <= 9999999999999) {
+        if (ts <= 999999999999) {
           ts *= 1000;
         }
 
         $.extend(params, {
-          startTime: ts - $scope.duration.sec * 1000,
-          endTime: ts + $scope.duration.sec + 1000
+          startTime: ts * 1000 - $scope.duration.sec * 1000000,
+          endTime: ts * 1000 + $scope.duration.sec + 1000000
         });
       }
       return params;
@@ -222,6 +222,7 @@ function (angular, app, _, require, kbn) {
       $scope.evtSource.onerror = function () {
         $scope.evtSource.close();
         $scope.evtSource = null;
+        $scope.loadingPcap = false;
       };
     };
 
