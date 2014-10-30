@@ -26,7 +26,7 @@ function (angular, app, _, kbn, moment) {
   var module = angular.module('kibana.panels.table', []);
   app.useModule(module);
 
-  module.controller('table', function($rootScope, $scope, $modal, $q, $compile, $timeout,
+  module.controller('table', function($rootScope, $scope, $filter, $modal, $q, $compile, $timeout,
     fields, querySrv, dashboard, filterSrv) {
     $scope.panelMeta = {
       modals : [
@@ -466,7 +466,53 @@ function (angular, app, _, kbn, moment) {
       return obj;
     };
 
+    $scope.field_title = $filter('fieldTitle');
 
+    $scope.events_filter = null;
+    $scope.filter_events = function(alert_id) {
+      $scope.alert_id = alert_id;
+      $scope.events_filter = filterSrv.set({
+        type:'querystring',
+        query: alert_id,
+        mandate: 'must'
+      });
+    }
+
+    $scope.remove_event_filter = function() {
+      filterSrv.remove($scope.events_filter);
+      $scope.events_filter = null;
+      $scope.alert_id = null;
+    }
+
+    $scope.search_pcap = function(doc) {
+      $rootScope.$broadcast('pcap', doc._source.message);
+    }
+  });
+
+  // fieldTitle filter
+  module.filter('fieldTitle', function() {
+    return function(text) {
+      switch (text) {
+        case 'dest':
+        case 'ip_dst_addr':
+          return 'Destination IP';
+        case 'source':
+        case 'ip_src_addr':
+          return 'Source IP';
+        case 'environment.instance':
+          return 'Environment Instance';
+        case '_type':
+          return 'Type';
+        default:
+          // output last field in the dot notation capilized
+          var parts = text.split('.');
+          var output = parts[parts.length - 1];
+          output = output.replace(/_/g, ' ').trim();
+          return output.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          });
+      }
+    }
   });
 
   // This also escapes some xml sequences
