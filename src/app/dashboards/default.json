@@ -322,7 +322,7 @@
           "all_fields": false,
           "trimFactor": 400,
           "localTime": true,
-          "timeField": "message.timestamp",
+          "timeField": "timestamp",
           "spyable": true,
           "queries": {
             "mode": "selected",
@@ -374,7 +374,7 @@
           "all_fields": false,
           "trimFactor": 400,
           "localTime": true,
-          "timeField": "timestamp",
+          "timeField": "message.timestamp",
           "spyable": true,
           "queries": {
             "mode": "selected",
