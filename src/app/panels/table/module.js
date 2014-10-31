@@ -575,7 +575,13 @@ function (angular, app, _, kbn, moment) {
   // WIP
   module.filter('tableLocalTime', function(){
     return function(text,event) {
-      return moment(event.sort[1]).format("YYYY-MM-DDTHH:mm:ss.SSSZ");
+      return moment(event.sort[1]).format("YYYY/MM/DD HH:mm:ss.SSSZ");
+    };
+  });
+  
+  module.filter('tableDetailsLocalTime', function(){
+    return function(text) {
+      return moment(text).format("YYYY/MM/DD HH:mm:ss.SSSZ")+"     [ Unix time: "+text+" ]";
     };
   });
 
