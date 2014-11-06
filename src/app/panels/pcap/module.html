@@ -169,7 +169,7 @@
                 <th class="span1">Dst Port <div>Dst Port</div></th>
                 <th class="span1">Protocol <div>Protocol</div></th>
                 <th class="span3">Pcap ID <div>Pcap ID</div></th>
-                <th class="span1">Download <div>Download</div></th>
+                <th class="span1">Actions <div>Download</div></th>
               <tr>
             </thead>
 
@@ -185,8 +185,11 @@
                 <td>{{ doc.unhexed.protocol }}</td>
                 <td>{{ doc.term }}</td>
                 <td>
-                  <a ng-click="downloadStream(doc)">
+                  <a title="Download pcap" ng-click="downloadStream(doc)">
                     <span class="icon-download"></span>
+                  </a>
+                  <a title="Extract file" href="/malware/exe.exe">
+                    <span class="icon-fire"></span>
                   </a>
                 </td>
               </tr>
