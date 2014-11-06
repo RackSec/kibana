@@ -78,8 +78,8 @@
       ]
     },
     "filter": {
-      "list":{ "0":
-        {
+      "list":{
+        "0": {
           "type": "time",
           "field":"timestamp",
           "from":"now-24h",

@@ -193,7 +193,7 @@
                     </td>
                     <!-- At some point we need to create a more efficient way of applying the filter pipeline -->
                     <td ng-if="!panel.localTime || panel.timeField != key" style="white-space:pre-wrap;word-wrap:break-word" bo-html="value|noXml|urlLink|stringify"></td>
-                    <td ng-if="panel.localTime && panel.timeField == key" style="white-space:pre-wrap;word-wrap:break-word" bo-html="value|tableDetailsLocalTime"></td>
+                    <td ng-if="panel.localTime && panel.timeField == key" style="white-space:pre-wrap;word-wrap:break-word" bo-html="value|tableLocalTime:event"></td>
                   </tr>
                 </table>
                 <pre style="white-space:pre-wrap;word-wrap:break-word"  bo-html="without_kibana(event)|tableJson:2" ng-switch-when="json"></pre>

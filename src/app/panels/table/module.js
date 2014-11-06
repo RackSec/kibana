@@ -572,17 +572,10 @@ function (angular, app, _, kbn, moment) {
     };
   });
 
-  // WIP
   module.filter('tableLocalTime', function(){
-    return function(text,event) {
-      return moment(event.sort[1]).format("YYYY/MM/DD HH:mm:ss.SSSZ");
+    return function(text, event) {
+      var ts = event._source.timestamp || event._source.message.timestamp;
+      return moment(parseInt(ts, 10)).format("YYYY/MM/DD HH:mm:ss.SSSZ");
     };
   });
-  
-  module.filter('tableDetailsLocalTime', function(){
-    return function(text) {
-      return moment(text).format("YYYY/MM/DD HH:mm:ss.SSSZ")+"     [ Unix time: "+text+" ]";
-    };
-  });
-
 });
