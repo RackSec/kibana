@@ -15,7 +15,7 @@
         "2": {
           "id": 2,
           "color": "#BA43A9",
-          "alias": "",
+          "alias": "All Events",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -24,7 +24,7 @@
         "3": {
           "id": 3,
           "color": "#BA43A9",
-          "alias": "",
+          "alias": "All Alerts",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -33,7 +33,7 @@
         "4": {
           "id": 4,
           "color": "#1F78C1",
-          "alias": "",
+          "alias": "Bro Events",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -42,7 +42,7 @@
         "5": {
           "id": 5,
           "color": "#EF843C",
-          "alias": "",
+          "alias": "Bro Alerts",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -51,7 +51,7 @@
         "6": {
           "id": 6,
           "color": "#BA43A9",
-          "alias": "",
+          "alias": "Sourcefire Events",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -60,7 +60,7 @@
         "7": {
           "id": 7,
           "color": "#BF1B00",
-          "alias": "",
+          "alias": "Sourcefire Alerts",
           "pin": true,
           "type": "lucene",
           "enable": true,
@@ -134,7 +134,7 @@
       "collapsable": true,
       "panels": [
         {
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -209,7 +209,7 @@
           "title": "Sourcefire Data"
         },
         {
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "histogram",
           "loadingEditor": false,
@@ -303,8 +303,8 @@
           "pages": 100,
           "offset": 0,
           "sort": [
-            "_type",
-            "asc"
+            "timestamp",
+            "desc"
           ],
           "overflow": "min-height",
           "fields": [
@@ -357,7 +357,7 @@
           "pages": 100,
           "offset": 0,
           "sort": [
-            "_type",
+            "message.timestamp",
             "desc"
           ],
           "overflow": "min-height",
@@ -446,7 +446,7 @@
     },
     {
       "type": "filtering",
-      "collapse": false,
+      "collapse": true,
       "notice": true,
       "enable": true
     }
