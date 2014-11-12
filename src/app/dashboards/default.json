@@ -115,38 +115,6 @@
   },
   "rows": [
     {
-      "title": "Welcome to OpenSOC",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 4,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "You can create a panel with charts and maps based on specific data. To see some samples of these panels, click [here](/#/dashboard/file/panels-overview.json).\n\nYou can move these panels around, edit their settings, minimize them or close them.",
-          "style": {},
-          "title": "Welcome to OpenSOC"
-        },
-        {
-          "error": false,
-          "span": 8,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "* The asterisk \"*\" can be as a wildcard for zero or more characters.\n* When querying or filtering for an IP address. Make sure to use double quotes around the address.\n* The period \".\" can be used to represent any character.\n* To see more regexp rules for filters, see the ES documentation [here](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#_standard_operators).",
-          "style": {},
-          "title": "Regular Expression Rules for Queries and Filters"
-        }
-      ],
-      "notice": false
-    },
-    {
       "title": "Histogram",
       "height": "150px",
       "editable": true,
