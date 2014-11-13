@@ -174,7 +174,7 @@
             "value_type": "individual",
             "query_as_alias": true
           },
-          "title": "Sourcefire Data"
+          "title": "Bro Data"
         },
         {
           "span": 6,
@@ -249,7 +249,7 @@
             "value_type": "cumulative",
             "query_as_alias": true
           },
-          "title": "Bro Data"
+          "title": "Sourcefire Data"
         }
       ],
       "notice": false
