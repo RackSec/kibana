@@ -15,17 +15,20 @@
 define([
   'angular',
   'app',
+  'config',
   'lodash',
   'require',
   'kbn'
 ],
-function (angular, app, _, require, kbn) {
+function (angular, app, config, _, require, kbn) {
   'use strict';
 
   var module = angular.module('kibana.panels.pcap', []);
   app.useModule(module);
 
-  module.controller('pcap', function($rootScope, $filter, $scope, $http, filterSrv) {
+  module.controller('pcap', function($rootScope, $filter, $scope, $http, ejsResource, filterSrv) {
+    var ejs = ejsResource(config.elasticsearch);
+
     $scope.user = window.user;
 
     $rootScope.$on('pcap', function(event, message) {
@@ -71,10 +74,11 @@ function (angular, app, _, require, kbn) {
 
     function serialize(obj) {
       var str = [];
-      for(var p in obj)
+      for(var p in obj) {
         if (obj.hasOwnProperty(p)) {
           str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
         }
+      }
       return str.join("&");
     }
 
@@ -83,13 +87,14 @@ function (angular, app, _, require, kbn) {
       if (timeFilters && timeFilters[0]) {
         var startTime = kbn.parseDate(timeFilters[0].from).valueOf();
         // TODO(ram): Use this in some meaningful way for time selection.
+        console.log("Start time:", startTime);
       }
     }
 
     function makeTimeFilter(filter) {
       if($scope.ts) {
         var ts = Date.parse($scope.ts);
-        ts = ts > 0 ? ts : parseInt($scope.ts);
+        ts = ts > 0 ? ts : parseInt($scope.ts, 10);
         if (ts <= 999999999999) {
           ts *= 1000;
         }
@@ -97,7 +102,7 @@ function (angular, app, _, require, kbn) {
         filter = (filter || ejs.BoolFilter())
           .must(ejs.RangeFilter('ts_micro')
             .gte((ts - $scope.duration.sec * 1000) * 1000)
-            .lte((ts + $scope.duration.sec * 1000) * 1000))
+            .lte((ts + $scope.duration.sec * 1000) * 1000));
       }
       return filter;
     }
@@ -110,9 +115,9 @@ function (angular, app, _, require, kbn) {
       ];
 
       var filter;
-      $.each(fields, function(i, f) {
+      _.forEach(fields, function(f) {
         if ($scope[f]) {
-          filter = (filter || ejs.BoolFilter()).must(ejs.TermFilter(f, $scope[f]))
+          filter = (filter || ejs.BoolFilter()).must(ejs.TermFilter(f, $scope[f]));
         }
       });
 
@@ -127,12 +132,12 @@ function (angular, app, _, require, kbn) {
 
       if ($scope.ts) {
         var ts = Date.parse($scope.ts);
-        ts = ts > 0 ? ts : parseInt($scope.ts);
+        ts = ts > 0 ? ts : parseInt($scope.ts, 10);
         if (ts <= 999999999999) {
           ts *= 1000;
         }
 
-        $.extend(params, {
+        _.assign(params, {
           startTime: ts * 1000 - $scope.duration.sec * 1000000,
           endTime: ts * 1000 + $scope.duration.sec + 1000000
         });
@@ -163,7 +168,7 @@ function (angular, app, _, require, kbn) {
           ejs.TermFilter('pcap_id', reversePcapId(pcapId)));
       }
 
-      filter = filter.must(ejs.OrFilter(termFilters))
+      filter = filter.must(ejs.OrFilter(termFilters));
 
       var size = 500;
       $scope.streamFrom = (page || 0) * size;
@@ -212,7 +217,7 @@ function (angular, app, _, require, kbn) {
 
       $scope.loadingPcap = true;
       $scope.evtSource && $scope.evtSource.close();
-      $scope.evtSource = new EventSource('/pcap/getPcapsByKeys?' + serialize(params));
+      $scope.evtSource = new window.EventSource('/pcap/getPcapsByKeys?' + serialize(params));
 
       $scope.evtSource.onmessage = function(e) {
         $scope.loadingPcap = false;
@@ -256,14 +261,14 @@ function (angular, app, _, require, kbn) {
       var facet = ejs.TermsFacet('packets').field('pcap_id');
 
       if (filter) {
-        facet = facet.facetFilter(filter)
+        facet = facet.facetFilter(filter);
       }
 
       var size = 100;
       var request = ejs.Request()
         .indices('pcap_all')
         .types('pcap_doc')
-        .facet(facet.size(size))
+        .facet(facet.size(size));
 
       $scope.loadingStreams = true;
       $scope.inspector = angular.toJson(JSON.parse(request.toString()),true);
@@ -359,7 +364,7 @@ function (angular, app, _, require, kbn) {
             }
           },
           select: function(proto) {
-            if ($scope.selected == proto.$) {
+            if ($scope.selected === proto.$) {
               $scope.selected.expanded = !$scope.selected.expanded;
               return;
             }
@@ -376,17 +381,17 @@ function (angular, app, _, require, kbn) {
           },
           buildHighlightMap: function(proto) {
             var self = this;
-            $.each(proto.field || [], function(i, field) {
+            _.forEach(proto.field || [], function(field) {
               self.processField(proto, field);
             });
           },
           processField: function(proto, field) {
-            var start = parseInt(field.$.pos);
-            var end = start + parseInt(field.$.size) - 1;
+            var start = parseInt(field.$.pos, 10);
+            var end = start + parseInt(field.$.size, 10) - 1;
             field.$.uid = this.uid(field.$);
             field.$.parent = proto;
 
-            if (proto.$.name == 'geninfo') {
+            if (proto.$.name === 'geninfo') {
               field.$.showname += ': ' + field.$.value;
               return;
             }
@@ -405,12 +410,11 @@ function (angular, app, _, require, kbn) {
         };
       },
       link: function(scope, elm, attr, controller) {
-        scope.$watch('packet', function(value, oldValue) {
-          console.log(value);
+        scope.$watch('packet', function(value) {
           controller.highlightMap = [];
           scope.selected = {};
           if (value) {
-            $.each(value.proto, function(i, proto) {
+            _.forEach(value.proto, function(proto) {
               proto.$.uid = controller.uid(proto.$);
               controller.buildHighlightMap(proto);
             });
@@ -432,10 +436,10 @@ function (angular, app, _, require, kbn) {
       compile: function(element) {
         return RecursionHelper.compile(element, function(scope, elm, attr, packet) {
 
-          scope.select = $.proxy(packet.select, packet);
+          scope.select = _.bind(packet.select, packet);
           scope.$watch('padding', function(value) {
-            scope.nextPadding = parseInt(value || '0') + 30;
-          })
+            scope.nextPadding = parseInt(value || '0', 10) + 30;
+          });
 
         });
       }
@@ -451,7 +455,7 @@ function (angular, app, _, require, kbn) {
         dump: '='
       },
       link: function(scope, elm, attr, packet) {
-        scope.$watch('dump', function(value, oldValue) {
+        scope.$watch('dump', function() {
           scope.bytes = [];
           for (var b = 0; b < scope.dump.length; b += 2) {
             scope.bytes.push(scope.dump.slice(b, b + 2));
@@ -459,9 +463,9 @@ function (angular, app, _, require, kbn) {
         });
 
         scope.selectByte = function(offset) {
-          var selected = $.grep(packet.highlightMap, function(obj) {
+          var selected = _.find(packet.highlightMap, function(obj) {
             return obj.start <= offset && obj.end >= offset;
-          })[0];
+          });
 
           selected && packet.select(selected);
         };
@@ -475,24 +479,24 @@ function (angular, app, _, require, kbn) {
         var parts = sourcePort.split(': ');
         return parts[parts.length - 1];
       }
-    }
+    };
   });
 
   module.filter('hexToIp', function() {
     return function(hex) {
       var parts = [];
       for (var p = 0; p < 4; p++) {
-        var hexPart = hex.slice(p * 2, p * 2 + 2)
+        var hexPart = hex.slice(p * 2, p * 2 + 2);
         parts.push(parseInt(hexPart, 16));
       }
       return parts.join('.');
-    }
+    };
   });
 
   module.filter('num', function() {
     return function(input) {
       return parseInt(input, 10);
-    }
+    };
   });
 
   module.filter('toAscii', function() {

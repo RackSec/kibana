@@ -32,6 +32,8 @@ include::panels/hits.asciidoc[]
 
 include::panels/map.asciidoc[]
 
+include::panels/pcap.asciidoc[]
+
 include::panels/sparklines.asciidoc[]
 
 include::panels/table.asciidoc[]

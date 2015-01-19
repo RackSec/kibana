@@ -476,43 +476,43 @@ function (angular, app, _, kbn, moment) {
         query: alert_id,
         mandate: 'must'
       });
-    }
+    };
 
     $scope.remove_event_filter = function() {
       filterSrv.remove($scope.events_filter);
       $scope.events_filter = null;
       $scope.alert_id = null;
-    }
+    };
 
     $scope.search_pcap = function(doc) {
       $rootScope.$broadcast('pcap', doc._source.message);
-    }
+    };
   });
 
   // fieldTitle filter
   module.filter('fieldTitle', function() {
     return function(text) {
       switch (text) {
-        case 'dest':
-        case 'ip_dst_addr':
-          return 'Destination IP';
-        case 'source':
-        case 'ip_src_addr':
-          return 'Source IP';
-        case 'environment.instance':
-          return 'Environment Instance';
-        case '_type':
-          return 'Type';
-        default:
-          // output last field in the dot notation capilized
-          var parts = text.split('.');
-          var output = parts[parts.length - 1];
-          output = output.replace(/_/g, ' ').trim();
-          return output.replace(/\w\S*/g, function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-          });
+      case 'dest':
+      case 'ip_dst_addr':
+        return 'Destination IP';
+      case 'source':
+      case 'ip_src_addr':
+        return 'Source IP';
+      case 'environment.instance':
+        return 'Environment Instance';
+      case '_type':
+        return 'Type';
+      default:
+        // output last field in the dot notation capilized
+        var parts = text.split('.');
+        var output = parts[parts.length - 1];
+        output = output.replace(/_/g, ' ').trim();
+        return output.replace(/\w\S*/g, function(txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
       }
-    }
+    };
   });
 
   // This also escapes some xml sequences

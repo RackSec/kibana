@@ -1,0 +1,6 @@
+== pcap
+Status: *Stable*
+
+The pcap panel is used for displaying static pcap formated as markdown, sanitized html or as plain
+pcap.
+
