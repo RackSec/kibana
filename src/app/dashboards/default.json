@@ -384,7 +384,7 @@
   "index": {
     "interval": "none",
     "pattern": "[logstash-]YYYY.MM.DD",
-    "default": "*alert*,*_index*",
+    "default": "*alert,*_index*",
     "warm_fields": false
   },
   "style": "dark",
@@ -401,14 +401,11 @@
       "history": [
         "_type:sourcefire_doc",
         "_type:bro_doc",
+        "_type:*_doc",
         "_type:sourcefire_alert",
         "_type:bro_alert",
-        "*",
-        "_type:*_doc",
-        "type:*_alert",
-        "bd1801e6-fb95-45df-aa62-38028740eaf0",
-        "type:bro_alert",
-        "type:bro_doc"
+        "_type:*_alert",
+        "*"
       ],
       "remember": 10
     },

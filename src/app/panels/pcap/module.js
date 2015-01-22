@@ -29,8 +29,6 @@ function (angular, app, config, _, require, kbn) {
   module.controller('pcap', function($rootScope, $filter, $scope, $http, ejsResource, filterSrv) {
     var ejs = ejsResource(config.elasticsearch);
 
-    $scope.user = window.user;
-
     $rootScope.$on('pcap', function(event, message) {
       if (message) {
         $scope.ip_src_addr = message.ip_src_addr;

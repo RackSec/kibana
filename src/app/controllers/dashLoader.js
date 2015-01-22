@@ -8,6 +8,7 @@ function (angular, _) {
   var module = angular.module('kibana.controllers');
 
   module.controller('dashLoader', function($scope, $http, timer, dashboard, alertSrv, $location) {
+    $scope.user = window.user;
     $scope.loader = dashboard.current.loader;
 
     $scope.init = function() {

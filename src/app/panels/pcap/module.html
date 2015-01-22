@@ -103,9 +103,9 @@
     }
   </style>
 
-  <p ng-if="!user.permissions.pcap">Access Denied</p>
+  <p ng-if="user && !user.permissions.pcap">Access Denied</p>
 
-  <div class="table-container" ng-if="user.permissions.pcap">
+  <div class="table-container" ng-if="!user || user.permissions.pcap">
     <div class="pcap-editor">
       <div class="editor-row">
         <div class="editor-option">
