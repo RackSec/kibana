@@ -155,6 +155,10 @@
                 <span ng-if="panel.localTime && panel.timeField == field" bo-html="event.sort[1]|tableLocalTime:event" title="{{event.sort[1]}}" class="table-field-value"></span>
               </td>
               <td>
+                <i ng-show="event._source.enrichment.cif.level"
+                    style="color: {{ event._source.enrichment.cif.level | cifColor}}"
+                    title="{{ event._source.enrichment.cif.level | cifInfo}}"
+                    class="pointer link icon-leaf cif-color"></i>
                 <i ng-show="alert_id"
                     ng-click="remove_event_filter() || $event.stopPropagation()"
                     class="pointer link icon-arrow-up"

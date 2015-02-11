@@ -572,6 +572,28 @@ function (angular, app, _, kbn, moment) {
     };
   });
 
+  module.filter('cifColor', function() {
+    return function(text) {
+      return {
+        RED: '#FF0000',
+        AMBER: '#FFD300',
+        GREEN: '#27CA19',
+        WHITE: '#FFFFFF'
+      }[text.toUpperCase()] || '';
+    };
+  });
+
+  module.filter('cifInfo', function() {
+    return function(text) {
+      return '[CIF]' + text + ': ' + {
+        RED: 'Recipients may not share TLP: RED information with any parties outside of the specific exchange, meeting, or conversation in which it is originally disclosed.',
+        AMBER: 'Recipients may only share TLP: AMBER information with members of their own organization who need to know, and only as widely as necessary to act on that information.',
+        GREEN: 'Recipients may share TLP: GREEN information with peers and partner organizations within their sector or community, but not via publicly accessible channels.',
+        WHITE: 'TLP: WHITE information may be distributed without restriction, subject to copyright controls.'
+      }[text.toUpperCase()] || '';
+    };
+  });
+
   module.filter('tableLocalTime', function(){
     return function(text, event) {
       var ts = event._source.timestamp || event._source.message.timestamp;
