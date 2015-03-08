@@ -473,7 +473,7 @@ function (angular, app, _, kbn, moment) {
       $scope.alert_id = alert_id;
       $scope.events_filter = filterSrv.set({
         type:'querystring',
-        query: alert_id,
+        query: 'alert_id:' + alert_id + ' OR alerts:' + alert_id,
         mandate: 'must'
       });
     };
