@@ -272,14 +272,15 @@ function($, _, moment) {
       });
     }
 
+    var value;
     var cached = memo.callmap[text];
     if (cached && (now - cached[1]) < memo.maxTime) {
-      var value = cached[0];
+      value = cached[0];
       memo.callmap[text] = [value, now];
       return value;
     }
 
-    var value = kbn._parseDate(text);
+    value = kbn._parseDate(text);
     memo.callmap[text] = [value, now];
     memo.numKeys++;
     return value;
