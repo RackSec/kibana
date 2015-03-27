@@ -81,7 +81,7 @@
         <ul class="unstyled" ng-if="panel.all_fields">
           <li class="table-fieldname" ng-style="panel.style" ng-repeat="field in fields.list|filter:fieldFilter|orderBy:identity">
             <i class="pointer" ng-class="{'icon-check': columns[field],'icon-check-empty': _.isUndefined(columns[field])}" ng-click="toggle_field(field)"></i>
-            <a class="pointer" data-unique="1" bs-popover="'app/panels/table/micropanel.html'" data-placement="rightTop" ng-click="toggle_micropanel(field,true)" ng-class="{label: columns[field]}" bo-text="{{ field_title(field) }}"
+            <a class="pointer" data-unique="1" bs-popover="'app/panels/table/micropanel.html'" data-placement="rightTop" ng-click="toggle_micropanel(field,true)" ng-class="{label: columns[field]}" bo-text="field_title(field)"
             title="{{field}}"></a>
           </li>
         </ul>
@@ -89,7 +89,7 @@
         <ul class="unstyled" ng-if="!panel.all_fields">
           <li class="table-fieldname"  ng-style="panel.style" ng-repeat="field in current_fields|filter:fieldFilter|orderBy:identity">
             <i class="pointer" ng-class="{'icon-check': columns[field],'icon-check-empty': _.isUndefined(columns[field])}" ng-click="toggle_field(field)"></i>
-            <a class="pointer" data-unique="1" bs-popover="'app/panels/table/micropanel.html'" data-placement="rightTop" ng-click="toggle_micropanel(field,true)" ng-class="{label: columns[field]}" bo-text="{{ field_title(field) }}"
+            <a class="pointer" data-unique="1" bs-popover="'app/panels/table/micropanel.html'" data-placement="rightTop" ng-click="toggle_micropanel(field,true)" ng-class="{label: columns[field]}" bo-text="field_title(field)"
             title="{{field}}"></a>
           </li>
         </ul>
@@ -162,7 +162,7 @@
                 <i ng-show="event._source.alert_id && !alert_id"
                     ng-click="filter_events(event._source.alert_id) || $event.stopPropagation()"
                     class="pointer link icon-arrow-down"
-                    title="Filter for events that math this alert."></i>
+                    title="Filter for events that match this alert."></i>
                 <i ng-show="event._source.message.ip_src_addr"
                     ng-click="search_pcap(event) || $event.stopPropagation()"
                     class="pointer link icon-hdd"
