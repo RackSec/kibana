@@ -250,7 +250,7 @@ function($, _, moment) {
 
   kbn.parseDateMemo = {
     callmap: {},
-    maxTime: 100,
+    maxTime: 1000,
     maxKeys: 500,
     numKeys: 0
   };
@@ -262,7 +262,7 @@ function($, _, moment) {
     var now = (new Date()).getTime();
 
     if (memo.numKeys > memo.maxKeys) {
-      // Cleanup expired the callmap lookups
+      // Cleanup expired callmap entries
       memo.numKeys = 0;
       $.each(memo.callmap, function(k, v) {
         var ts = v[1];
@@ -274,7 +274,9 @@ function($, _, moment) {
 
     var cached = memo.callmap[text];
     if (cached && (now - cached[1]) < memo.maxTime) {
-      return cached[0];
+      var value = cached[0];
+      memo.callmap[text] = [value, now];
+      return value;
     }
 
     var value = kbn._parseDate(text);
