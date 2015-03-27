@@ -248,8 +248,43 @@ function($, _, moment) {
     return new Date(new Date().getTime() - (kbn.interval_to_ms(string)));
   };
 
-  /* This is a simplified version of elasticsearch's date parser */
+  kbn.parseDateMemo = {
+    callmap: {},
+    maxTime: 100,
+    maxKeys: 500,
+    numKeys: 0
+  };
+
+  // We will add memoization with an expiration time
+  // to return the same exact timestamp for duplicate calls.
   kbn.parseDate = function(text) {
+    var memo = kbn.parseDateMemo;
+    var now = (new Date()).getTime();
+
+    if (memo.numKeys > memo.maxKeys) {
+      // Cleanup expired the callmap lookups
+      memo.numKeys = 0;
+      $.each(memo.callmap, function(k, v) {
+        var ts = v[1];
+        if (now - ts > memo.maxTime) {
+          delete memo.callmap[k];
+        }
+      });
+    }
+
+    var cached = memo.callmap[text];
+    if (cached && (now - cached[1]) < memo.maxTime) {
+      return cached[0];
+    }
+
+    var value = kbn._parseDate(text);
+    memo.callmap[text] = [value, now];
+    memo.numKeys++;
+    return value;
+  };
+
+  /* This is a simplified version of elasticsearch's date parser */
+  kbn._parseDate = function(text) {
     if(_.isDate(text)) {
       return text;
     }
