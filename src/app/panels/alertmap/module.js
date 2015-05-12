@@ -265,33 +265,33 @@ function (angular, app, _, L, localRequire) {
             var eventIconAnchor = [16, 35];
 
             var getMarkerIcon = function(data) {
-              if (data.type == 'alert') {
+              if (data.type === "alert") {
                 var pl = _.isArray(data.priority) ? data.priority[0] : data.priority;
                 switch (pl) {
-                  case "Low": 
-                    return L.icon({ 
-                      iconSize: alertIconSize,
-                      iconAnchor: alertIconAnchor,
-                      iconUrl: L.Icon.Default.imagePath + '/marker-icon-a-green.png' }
-                    );
-                  case "Medium": 
-                    return L.icon({ 
-                      iconSize: alertIconSize,
-                      iconAnchor: alertIconAnchor,
-                      iconUrl: L.Icon.Default.imagePath + '/marker-icon-a-yellow.png' 
-                    });
-                  case "High": 
-                    return L.icon({ 
-                      iconSize: alertIconSize,
-                      iconAnchor: alertIconAnchor,
-                      iconUrl: L.Icon.Default.imagePath + '/marker-icon-a-red.png' 
-                    });
-                  default: 
-                    return L.icon({ 
-                      iconSize: alertIconSize,
-                      iconAnchor: alertIconAnchor,
-                      iconUrl: L.Icon.Default.imagePath + '/marker-icon-unknown.png' 
-                    });
+                case "Low": 
+                  return L.icon({ 
+                    iconSize: alertIconSize,
+                    iconAnchor: alertIconAnchor,
+                    iconUrl: L.Icon.Default.imagePath + '/marker-icon-a-green.png'
+                  });
+                case "Medium": 
+                  return L.icon({
+                    iconSize: alertIconSize,
+                    iconAnchor: alertIconAnchor,
+                    iconUrl: L.Icon.Default.imagePath + '/marker-icon-a-yellow.png' 
+                  });
+                case "High": 
+                  return L.icon({ 
+                    iconSize: alertIconSize,
+                    iconAnchor: alertIconAnchor,
+                    iconUrl: L.Icon.Default.imagePath + '/marker-icon-a-red.png' 
+                  });
+                default: 
+                  return L.icon({ 
+                    iconSize: alertIconSize,
+                    iconAnchor: alertIconAnchor,
+                    iconUrl: L.Icon.Default.imagePath + '/marker-icon-unknown.png' 
+                  });
                 }
               } else {
                 return L.icon({ 
@@ -300,7 +300,7 @@ function (angular, app, _, L, localRequire) {
                   iconUrl: L.Icon.Default.imagePath + '/marker-icon-e.png' 
                 });
               }
-            }
+            };
 
             _.each(scope.data, function(p) {
               if(!_.isUndefined(p.tooltip) && p.tooltip !== '') {
