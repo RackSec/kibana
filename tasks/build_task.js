@@ -18,6 +18,7 @@ module.exports = function(grunt) {
   // run a string replacement on the require config, using the latest revision number as the cache buster
   grunt.registerTask('build:write_revision', function() {
     grunt.event.once('git-describe', function (desc) {
+      var ospConfig = grunt.file.readJSON('../package.json');
       grunt.config('string-replace.config', {
         files: {
           '<%= destDir %>/app/components/require.config.js': '<%= destDir %>/app/components/require.config.js',
@@ -29,6 +30,10 @@ module.exports = function(grunt) {
             {
               pattern: /@REV@/g,
               replacement: grunt.config.data.pkg.version +"-"+ desc.object
+            },
+            {
+              pattern: /@OSP@/g,
+              replacement: ospConfig.version
             }
           ]
         }

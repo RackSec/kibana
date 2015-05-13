@@ -29,6 +29,7 @@ function (angular, $, _, appLevelRequire) {
 
   // This stores the Kibana revision number, @REV@ is replaced by grunt.
   app.constant('kbnVersion',"@REV@");
+  app.constant('ospVersion',"@OSP@");
 
   // The minimum version that must be in the cluster
   app.constant('esMinVersion','0.90.9');

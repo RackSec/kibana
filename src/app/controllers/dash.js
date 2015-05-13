@@ -10,7 +10,7 @@ function (angular, config, _) {
   var module = angular.module('kibana.controllers');
 
   module.controller('DashCtrl', function(
-    $scope, $route, ejsResource, fields, dashboard, alertSrv, panelMove, esVersion, kbnVersion) {
+    $scope, $route, ejsResource, fields, dashboard, alertSrv, panelMove, esVersion, kbnVersion, ospVersion) {
 
     $scope.Math = Math;
 
@@ -32,6 +32,7 @@ function (angular, config, _) {
     $scope.init = function() {
       $scope.config = config;
       $scope.kbnVersion = kbnVersion;
+      $scope.ospVersion = ospVersion;
       // Make stuff, including lodash available to views
       $scope._ = _;
       $scope.dashboard = dashboard;
