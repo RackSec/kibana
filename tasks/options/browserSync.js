@@ -5,6 +5,7 @@ module.exports = function(config) {
         src: ['<%= srcDir %>/css/*.css', '<%= srcDir %>/*.html'],
       },
       options: {
+        watchTask: true,
         server: config.srcDir,
       }
     }
