@@ -32,7 +32,8 @@
     "grunt-scratchy": "git://github.com/rashidkpc/grunt-scratchy.git",
     "glob": "~3.2.8",
     "kat": "~0.2.2",
-    "expect.js": "~0.2.0"
+    "expect.js": "~0.2.0",
+    "grunt-browser-sync": "^2.2.0"
   },
   "license": "Apache License"
 }
