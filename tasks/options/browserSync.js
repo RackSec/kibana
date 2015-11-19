@@ -2,7 +2,7 @@ module.exports = function(config) {
   return {
     dev: {
       bsFiles: {
-        src: ['<%= srcDir %>/css/*.css', '<%= srcDir %>/*.html'],
+        src: ['<%= srcDir %>/css/*.css', '<%= srcDir %>/**/*.html', '<%= srcDir %>/**/*.js'],
       },
       options: {
         watchTask: true,
