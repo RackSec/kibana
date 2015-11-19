@@ -91,7 +91,7 @@ function (angular, config, _) {
     };
 
     $scope.pulldownTabStyle = function(i) {
-      var classes = ['bgPrimary','bgSuccess','bgWarning','bgDanger','bgInverse','bgInfo'];
+      var classes = ['btn-primary','btn-success','btn-warning','btn-danger','btn-inverse','btn-info'];
       i = i%classes.length;
       return classes[i];
     };
