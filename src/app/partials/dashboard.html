@@ -1,6 +1,6 @@
 <div class="pulldowns-panels">
   <nil ng-repeat="pulldown in dashboard.current.pulldowns" ng-controller="PulldownCtrl" ng-show="pulldown.enable">
-    <div class="top-row-open" ng-hide="pulldown.collapse">
+    <div class="pulldown-panel" ng-hide="pulldown.collapse">
       <kibana-simple-panel type="pulldown.type" ng-cloak></kibana-simple-panel>
     </div>
   </nil>
