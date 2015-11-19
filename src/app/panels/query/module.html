@@ -15,23 +15,30 @@
       </span>
     </form>
   </div>
-  <div class="inline-block" ng-repeat="id in dashboard.current.services.query.ids|pinnedQuery:true">
-    <span class="pointer badge pins query-box" ng-show="$first" ng-click="panel.pinned = !panel.pinned">
-      Pinned <i ng-class="{'icon-caret-right':panel.pinned,'icon-caret-left':!panel.pinned}"></i>
-    </span>
-    <span ng-show="panel.pinned" class="badge pinned query-box">
-      <i class="icon-circle pointer"
-        ng-show="dashboard.current.services.query.list[id].enable"
-        ng-style="{color: dashboard.current.services.query.list[id].color}"
-        data-unique="1" bs-popover="'app/panels/query/meta.html'"
-        data-placement="bottomLeft"></i>
-      <i class="pointer icon-circle-blank" bs-tooltip="'Activate query'"
-        ng-click="dashboard.current.services.query.list[id].enable=true;dashboard.refresh();" ng-hide="dashboard.current.services.query.list[id].enable"
-        ng-style="{color: dashboard.current.services.query.list[id].color}"></i>
-      <span bs-tooltip="dashboard.current.services.query.list[id].query | limitTo:45">
-        {{dashboard.current.services.query.list[id].alias || dashboard.current.services.query.list[id].query}}
+  <div class="mt-10">
+    <div class="inline-block" ng-repeat="id in dashboard.current.services.query.ids|pinnedQuery:true">
+      <span class="pointer badge pins query-box" ng-show="$first" ng-click="panel.pinned = !panel.pinned">
+        Pinned <i ng-class="{'icon-caret-right':panel.pinned,'icon-caret-left':!panel.pinned}"></i>
       </span>
-    </span>
+      <span ng-show="panel.pinned" class="badge pinned query-box">
+        <span class="query-box-left">
+          <i class="icon-circle pointer"
+            ng-show="dashboard.current.services.query.list[id].enable"
+            ng-style="{color: dashboard.current.services.query.list[id].color}"
+            data-unique="1" bs-popover="'app/panels/query/meta.html'"
+            data-placement="bottomLeft"></i>
+          <i class="pointer icon-circle-blank" bs-tooltip="'Activate query'"
+            ng-click="dashboard.current.services.query.list[id].enable=true;dashboard.refresh();" ng-hide="dashboard.current.services.query.list[id].enable"
+            ng-style="{color: dashboard.current.services.query.list[id].color}"></i>
+        </span>
+        <span class="query-box-right">
+          {{dashboard.current.services.query.list[id].alias || dashboard.current.services.query.list[id].query}}
+          <span class="query-text">
+            {{dashboard.current.services.query.list[id].query | limitTo:45}}
+          </span>
+        </span>
+      </span>
+    </div>
   </div>
   <span style="display:inline-block" ng-show="unPinnedQueries.length == 0">
     <i class="icon-search pointer" ng-click="refresh()"></i>
