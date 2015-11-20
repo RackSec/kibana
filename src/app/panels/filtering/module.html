@@ -1,10 +1,14 @@
 <div ng-controller='filtering' ng-init="init()">
-  <h3 class="small-header mt-0">Filters</h3>
+  <h3 class="small-header mt-0 inline-block mr-5">Filters</h3>
+  <button class="btn btn-primary btn-small" ng-click="add()">
+    <i class="pointer icon-plus-sign" bs-tooltip="'Add a query filter'" data-placement="right"></i>
+    Add
+  </button>
   <div class='filtering-container'>
-    <span ng-show="dashboard.current.services.filter.ids.length == 0">
+    <span class="mt-5" ng-show="dashboard.current.services.filter.ids.length == 0">
       <h5>No filters available</h5>
     </span>
-    <div ng-repeat="id in dashboard.current.services.filter.ids" class="small filter-box">
+    <div ng-repeat="id in dashboard.current.services.filter.ids" class="small filter-box mt-5">
       <div>
         <strong>{{dashboard.current.services.filter.list[id].type}}</strong>
         <span ng-show="!dashboard.current.services.filter.list[id].editing && isEditable(dashboard.current.services.filter.list[id])" class="filter-mandate" ng-click="dashboard.current.services.filter.list[id].editing = true">
@@ -48,6 +52,5 @@
         </div>
       </form>
     </div>
-    <i class="pointer icon-plus-sign" ng-click="add()" bs-tooltip="'Add a query filter'" data-placement="right"></i>
   </div>
 </div>
