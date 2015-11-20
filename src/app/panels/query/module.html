@@ -1,5 +1,13 @@
 <div ng-controller='query' ng-init="init()" class="query-panel">
-  <h3 class="small-header mt-0">Queries</h3>
+  <div>
+    <h3 class="small-header mt-0 inline-block mr-5">Queries</h3>
+    <button class="btn btn-success btn-small" ng-click="refresh()">
+      <i class="icon-refresh pointer"></i>
+    </button>
+    <button class="btn btn-primary btn-small" ng-click="querySrv.set({})">
+      <i class="icon-plus pointer"></i> Add
+    </button>
+  </div>
   <div ng-repeat="id in (unPinnedQueries = (dashboard.current.services.query.ids|pinnedQuery:false))" ng-class="{'short-query': unPinnedQueries.length>1}">
     <form class="form-search" style="position:relative;margin:5px 0;" ng-submit="refresh()">
       <span class="begin-query">
@@ -41,8 +49,4 @@
       </span>
     </div>
   </div>
-  <span style="display:inline-block" ng-show="unPinnedQueries.length == 0">
-    <i class="icon-search pointer" ng-click="refresh()"></i>
-    <i class="icon-plus pointer" ng-click="querySrv.set({})"></i>
-  </span>
 </div>
