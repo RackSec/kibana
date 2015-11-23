@@ -9,7 +9,7 @@
   <div>
     <div class="kibana-container container">
       <!-- Rows -->
-      <div class="kibana-row" ng-controller="RowCtrl" ng-repeat="(row_name, row) in dashboard.current.rows" ng-style="row_style(row)">
+      <div class="kibana-row" ng-controller="RowCtrl" ng-repeat="(row_name, row) in dashboard.current.rows" ng-style="row_style(row)" ng-class="{'empty': row.panels.length < 1}">
         <div class="row-control">
           <div class="controls-wrapper" ng-class="{'open': !row.collapse}">
 
