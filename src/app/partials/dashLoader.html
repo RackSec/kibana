@@ -20,7 +20,7 @@
   </a>
 </li>
 <li class="dropdown" ng-show="showDropdown('load')" >
-  <a href="#" bs-tooltip="'Load'" data-placement="bottom" class="dropdown-toggle text-center" data-toggle="dropdown" ng-click="elasticsearch_dblist('title:'+elasticsearch.query+'*')">
+  <a href="#" class="dropdown-toggle text-center" data-toggle="dropdown" ng-click="elasticsearch_dblist('title:'+elasticsearch.query+'*')">
     <i class='icon-folder-open'></i>
     <div class="menu-label">OPEN</div>
   </a>
@@ -72,7 +72,7 @@
 
 </li>
 <li class="dropdown"ng-show="showDropdown('save')">
-  <a href="#"  bs-tooltip="'Save'" data-placement="bottom" class="dropdown-toggle text-center" data-toggle="dropdown">
+  <a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">
     <i class='icon-save'></i>
     <div class="menu-label">SAVE</div>
   </a>
@@ -116,13 +116,13 @@
 
 </li>
 <li ng-show="showDropdown('share')">
-  <a class="text-center" bs-tooltip="'Share'" data-placement="bottom" ng-click="elasticsearch_save('temp',dashboard.current.loader.save_temp_ttl)" bs-modal="'app/partials/dashLoaderShare.html'">
+  <a class="text-center" ng-click="elasticsearch_save('temp',dashboard.current.loader.save_temp_ttl)" bs-modal="'app/partials/dashLoaderShare.html'">
     <i class='icon-share'></i>
     <div class="menu-label">SHARE</div>
   </a>
 </li>
 
-<li ng-show="dashboard.current.editable" bs-tooltip="'Configure dashboard'" data-placement="bottom">
+<li ng-show="dashboard.current.editable">
   <a class="link text-center" config-modal="app/partials/dasheditor.html" kbn-model="dashboard">
     <i class='icon-cog'></i>
     <div class="menu-label">CONFIGURE</div>
@@ -130,7 +130,7 @@
 </li>
 
 <li class="text-center" ng-if="user">
-  <a bs-tooltip="'Logout'" data-placement="bottom" href='/logout'>
+  <a href='/logout'>
     <i class='icon-off'></i>
     <div class="menu-label">LOGOUT</div>
   </a>
