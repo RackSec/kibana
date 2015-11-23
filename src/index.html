@@ -45,8 +45,7 @@
             <li ng-repeat="pulldown in dashboard.current.pulldowns" ng-controller="PulldownCtrl" ng-show="pulldown.enable">
               <button class="top-row-close btn mr-10"
                 ng-class="[pulldownTabStyle($index), pulldown.collapse ? '' : 'open']"
-                ng-click="toggle_pulldown(pulldown);dismiss();"
-                bs-tooltip="'Toggle '+pulldown.type" data-placement="bottom">
+                ng-click="toggle_pulldown(pulldown);dismiss();">
                 <span class="small">{{pulldown.type}}</span>
                 <i class="small" ng-class="{'icon-caret-down':pulldown.collapse,'icon-caret-up':!pulldown.collapse}"></i>
                 <i class="small icon-star" ng-show="row.notice && pulldown.collapse"></i>
