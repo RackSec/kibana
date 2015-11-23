@@ -1,0 +1,44 @@
+.kibana-row {
+
+  .row-control {
+    position: relative;
+  }
+
+  .row-close {
+    margin: 0 0 6px;
+    border: 0;
+    background: @blue-xdark;
+  }
+
+  .controls-wrapper.open {
+    position: absolute;
+    top: 0;
+    bottom: 6px;
+    min-height: 150px;
+  }
+
+  .controls-wrapper {
+    background: @black;
+  }
+
+  .row-open {
+    position: relative;
+    left: auto;
+    margin-top: 0;
+  }
+
+  .row-panels {
+    padding-left: 35px;
+  }
+
+  .row-tab,
+  .row-close .row-button {
+    color: fade(@white, 60%);
+    background: @black;
+
+    &:hover {
+      background: fade(@white, 10%);
+      color: @white;
+    }
+  }
+}
