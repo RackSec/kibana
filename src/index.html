@@ -9,10 +9,13 @@
     <meta name="viewport" content="width=device-width">
 
     <title>Kibana 3{{dashboard.current.title ? " - "+dashboard.current.title : ""}}</title>
-    <link rel="stylesheet" href="css/bootstrap.light.min.css" title="Light">
     <link rel="stylesheet" href="css/timepicker.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" ng-href="css/bootstrap.{{dashboard.current.style||'dark'}}.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/kibana.min.css">
     <!-- load the root require context -->
     <script src="vendor/require/require.js"></script>
     <script src="app/components/require.config.js"></script>
@@ -28,10 +31,6 @@
         <center><h3>You must enable javascript to use Kibana</h3></center>
       </div>
     </noscript>
-    <!--<link rel="stylesheet" ng-href="css/bootstrap.{{dashboard.current.style||'dark'}}.min.css">-->
-    <link rel="stylesheet" ng-href="css/bootstrap.{{dashboard.current.style||'dark'}}.min.css">
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <div ng-cloak ng-repeat='alert in dashAlerts.list' class="alert-{{alert.severity}} dashboard-notice" ng-show="$last">
       <button type="button" class="close" ng-click="dashAlerts.clear(alert)" style="padding-right:50px">&times;</button>
@@ -41,6 +40,19 @@
       <div class="navbar-inner">
         <div class="container-fluid">
           <span class="brand"><img src="img/small.png" bs-tooltip="'Kibana '+(kbnVersion=='@REV@'?'master':kbnVersion)" data-placement="bottom"> {{dashboard.current.title}}</span>
+
+          <ul class="pulldowns-buttons nav">
+            <li ng-repeat="pulldown in dashboard.current.pulldowns" ng-controller="PulldownCtrl" ng-show="pulldown.enable">
+              <button class="top-row-close btn mr-10"
+                ng-class="[pulldownTabStyle($index), pulldown.collapse ? '' : 'open']"
+                ng-click="toggle_pulldown(pulldown);dismiss();"
+                bs-tooltip="'Toggle '+pulldown.type" data-placement="bottom">
+                <span class="small">{{pulldown.type}}</span>
+                <i class="small" ng-class="{'icon-caret-down':pulldown.collapse,'icon-caret-up':!pulldown.collapse}"></i>
+                <i class="small icon-star" ng-show="row.notice && pulldown.collapse"></i>
+              </button>
+            </li>
+          </ul>
 
           <ul class="nav pull-right" ng-controller='dashLoader' ng-init="init()" ng-include="'app/partials/dashLoader.html'">
           </ul>

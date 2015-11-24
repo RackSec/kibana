@@ -9,9 +9,8 @@
   <form name="input" style="margin:3px 0 0 0">
     <ul class="nav nav-pills timepicker-dropdown">
       <li class="dropdown">
-
         <a class="dropdown-toggle timepicker-dropdown" data-toggle="dropdown" href="" bs-tooltip="time.from.date ? (time.from.date | date:'yyyy-MM-dd HH:mm:ss.sss') + ' <br>to<br>' +(time.to.date | date:'yyyy-MM-dd HH:mm:ss.sss') : 'Click to set a time filter'" data-placement="bottom" ng-click="dismiss();">
-
+          <div class="timepicker-label">TIMESPAN:</div>
           <span ng-show="filterSrv.idsByType('time').length">
             <span class="pointer" ng-hide="panel.now">{{time.from.date | date:'MMM d, y HH:mm:ss'}}</span>
             <span class="pointer" ng-show="panel.now">{{time.from.date | moment:'ago'}}</span>
@@ -20,7 +19,6 @@
             <span class="pointer" ng-show="panel.now">{{time.to.date | moment:'ago'}}</span>
           </span>
           <span ng-hide="filterSrv.idsByType('time').length">Time filter</span>
-          <span ng-show="dashboard.current.refresh" class="text-warning">refreshed every {{dashboard.current.refresh}} </span>
           <i class="icon-caret-down"></i>
         </a>
 
@@ -29,21 +27,20 @@
           <li ng-repeat='timespan in panel.time_options track by $index'>
             <a ng-click="setRelativeFilter(timespan)">Last {{timespan}}</a>
           </li>
-
-          <!-- Auto refresh submenu -->
-          <li class="dropdown-submenu">
-            <a>Auto-Refresh</a>
-            <ul class="dropdown-menu">
-              <li><a ng-click="dashboard.set_interval(false)">Off</a></li>
-              <li ng-repeat="interval in panel.refresh_intervals track by $index"><a ng-click="dashboard.set_interval(interval)">Every {{interval}}</a></li>
-            </ul>
-          </li>
           <li><a ng-click="customTime()">Custom</a></li>
         </ul>
-
       </li>
-      <li>
-        <a ng-click="dashboard.refresh()"><i class="icon-refresh"></i></a>
+      <li class="dropdown">
+        <a class="dropdown-toggle timepicker-dropdown" data-toggle="dropdown" href="#">
+          <div class="timepicker-label">REFRESH:</div>
+          <span ng-show="dashboard.current.refresh">{{dashboard.current.refresh}} </span>
+          <span ng-show="!dashboard.current.refresh">Off</span>
+          <i class="icon-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ng-click="dashboard.set_interval(false)">Off</a></li>
+          <li ng-repeat="interval in panel.refresh_intervals track by $index"><a ng-click="dashboard.set_interval(interval)">Every {{interval}}</a></li>
+        </ul>
       </li>
     </ul>
 

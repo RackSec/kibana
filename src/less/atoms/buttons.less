@@ -1,0 +1,88 @@
+.btn {
+  border-radius: 3px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+
+  &.open {
+    border-bottom: 0;
+    position: relative;
+    bottom: -2px;
+  }
+}
+
+.btn-primary {
+  background-color: @blue;
+  border-bottom-color: darken(@blue, 15%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@blue, 10%);
+  }
+}
+
+.btn-info {
+  background-color: @purple;
+  border-bottom-color: darken(@purple, 15%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@purple, 10%);
+  }
+}
+
+.btn-success {
+  background-color: @green;
+  border-bottom-color: darken(@green, 15%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@green, 10%);
+  }
+}
+
+.btn-warning {
+  background-color: @orange;
+  border-bottom-color: darken(@orange, 15%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@orange, 10%);
+  }
+}
+
+.btn-danger {
+  background-color: @red;
+  border-bottom-color: darken(@red, 10%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@red, 10%);
+  }
+}
+
+.btn-inverse {
+  background-color: @black;
+  border-bottom-color: darken(@black, 10%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@black, 10%);
+  }
+}
+
+.btn-link {
+  border-radius: 0;
+  border-bottom: none;
+}

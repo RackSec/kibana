@@ -1,0 +1,60 @@
+.filter-box {
+  background: @blue-xdark;
+  display: inline-block;
+  padding: 5px 55px 0 8px;
+  vertical-align: top;
+  margin-right: 5px;
+  position: relative;
+
+  .actions {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+  }
+
+  select {
+    display: block;
+    background-color: lighten(@grey, 5%);
+    box-shadow: 0 1px 1px fade(@white, 32%);
+  }
+
+  input {
+    display: block;
+    vertical-align: middle;
+    background-color: lighten(@grey, 5%);
+    box-shadow: 0 1px 1px darken(@black, 10%) inset, 0 1px 1px fade(@white, 22%);
+  }
+}
+
+ // <style>
+ //    .filtering-container {
+ //      margin-top: 3px;
+ //    }
+ //    .filter-panel-filter {
+ //      display:inline-block;
+ //      vertical-align: top;
+ //      width: 220px;
+ //      padding: 5px 5px 0px 5px;
+ //      margin: 5px 5px 5px 0px;
+ //      color: #fff;
+ //      background-color: #444;
+ //    }
+ //    .filter-panel-filter ul {
+ //      margin-bottom: 3px;
+ //    }
+ //    .filter-deselected {
+ //      opacity: 0.5;
+ //    }
+ //    .filter-action {
+ //      float:right;
+ //      margin-bottom: 0px !important;
+ //      margin-left: 3px;
+ //    }
+ //    .filter-mandate {
+ //      text-decoration: underline;
+ //      cursor: pointer;
+ //    }
+ //    .filter-apply {
+ //      float:right;
+ //    }
+ //  </style>

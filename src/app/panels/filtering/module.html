@@ -1,42 +1,14 @@
 <div ng-controller='filtering' ng-init="init()">
-  <style>
-    .filtering-container {
-      margin-top: 3px;
-    }
-    .filter-panel-filter {
-      display:inline-block;
-      vertical-align: top;
-      width: 220px;
-      padding: 5px 5px 0px 5px;
-      margin: 5px 5px 5px 0px;
-      color: #fff;
-      background-color: #444;
-    }
-    .filter-panel-filter ul {
-      margin-bottom: 3px;
-    }
-    .filter-deselected {
-      opacity: 0.5;
-    }
-    .filter-action {
-      float:right;
-      margin-bottom: 0px !important;
-      margin-left: 3px;
-    }
-    .filter-mandate {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    .filter-apply {
-      float:right;
-    }
-  </style>
-
+  <h3 class="small-header mt-0 inline-block mr-5">Filters</h3>
+  <button class="btn btn-primary btn-small" ng-click="add()">
+    <i class="pointer icon-plus-sign" bs-tooltip="'Add a query filter'" data-placement="right"></i>
+    Add
+  </button>
   <div class='filtering-container'>
-    <span ng-show="dashboard.current.services.filter.ids.length == 0">
+    <span class="mt-5" ng-show="dashboard.current.services.filter.ids.length == 0">
       <h5>No filters available</h5>
     </span>
-    <div ng-repeat="id in dashboard.current.services.filter.ids" class="small filter-panel-filter">
+    <div ng-repeat="id in dashboard.current.services.filter.ids" class="small filter-box mt-5">
       <div>
         <strong>{{dashboard.current.services.filter.list[id].type}}</strong>
         <span ng-show="!dashboard.current.services.filter.list[id].editing && isEditable(dashboard.current.services.filter.list[id])" class="filter-mandate" ng-click="dashboard.current.services.filter.list[id].editing = true">
@@ -52,9 +24,11 @@
           <select class="input-small" ng-model="dashboard.current.services.filter.list[id].mandate" ng-options="f for f in ['must','mustNot','either']"></select>
         </span>
 
-        <i class="filter-action pointer icon-remove" bs-tooltip="'Remove'" ng-click="remove(id)"></i>
-        <i class="filter-action pointer" ng-class="{'icon-check': dashboard.current.services.filter.list[id].active,'icon-check-empty': !dashboard.current.services.filter.list[id].active}" bs-tooltip="'Toggle'" ng-click="toggle(id)"></i>
-        <i class="filter-action pointer icon-edit" ng-hide="dashboard.current.services.filter.list[id].editing || !isEditable(dashboard.current.services.filter.list[id])" bs-tooltip="'Edit'" ng-click="dashboard.current.services.filter.list[id].editing = true"></i>
+        <div class="actions">
+          <i class="filter-action pointer icon-remove" bs-tooltip="'Remove'" ng-click="remove(id)"></i>
+          <i class="filter-action pointer" ng-class="{'icon-check': dashboard.current.services.filter.list[id].active,'icon-check-empty': !dashboard.current.services.filter.list[id].active}" bs-tooltip="'Toggle'" ng-click="toggle(id)"></i>
+          <i class="filter-action pointer icon-edit" ng-hide="dashboard.current.services.filter.list[id].editing || !isEditable(dashboard.current.services.filter.list[id])" bs-tooltip="'Edit'" ng-click="dashboard.current.services.filter.list[id].editing = true"></i>
+        </div>
       </div>
 
       <div ng-hide="dashboard.current.services.filter.list[id].editing && isEditable(dashboard.current.services.filter.list[id])">
@@ -78,6 +52,5 @@
         </div>
       </form>
     </div>
-    <i class="pointer icon-plus-sign" ng-click="add()" bs-tooltip="'Add a query filter'" data-placement="right"></i>
   </div>
 </div>
