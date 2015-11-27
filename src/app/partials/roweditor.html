@@ -1,8 +1,10 @@
 <div class="modal-body">
-  <div class="pull-right editor-title">Row settings</div>
 
-  <div ng-model="editor.index" bs-tabs>
-    <div ng-repeat="tab in ['General','Panels','Add Panel']" data-title="{{tab}}">
+  <div class="editor-header">
+    <h3 class="editor-title">Row settings:</h3>
+    <div ng-model="editor.index" bs-tabs>
+      <div ng-repeat="tab in ['General','Panels','Add Panel']" data-title="{{tab}}">
+      </div>
     </div>
   </div>
 
