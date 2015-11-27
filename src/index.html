@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="css/timepicker.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" ng-href="css/bootstrap.{{dashboard.current.style||'dark'}}.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/kibana.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Light theme -->
+    <link rel="stylesheet" href="css/kibana-light.min.css" ng-if="dashboard.current.style == 'light'">
+
     <!-- load the root require context -->
     <script src="vendor/require/require.js"></script>
     <script src="app/components/require.config.js"></script>
