@@ -1,0 +1,81 @@
+@import "variables";
+
+// override some variables
+@green: #45B29D;
+@blue: #35B1FC;
+@yellow: #FED532;
+@purple: #B87AC6;
+
+// ====================================================
+// Light theme for Kibana.
+// This styles override (only) visuals from kibana.less
+
+
+// Global
+body {
+  background: #EAEFEF;
+  color: #657886;
+}
+
+// brand
+.navbar .brand {
+  color: #657886;
+}
+
+
+// Navbar
+.navbar .nav > li > a {
+  color: fade(@black, 50%);
+}
+
+.navbar .dropdown-toggle.timepicker-dropdown {
+  color: fade(@black, 80%);
+}
+
+.navbar .timepicker-dropdown .timepicker-label {
+  color: fade(@black, 50%);
+}
+
+// Panels
+.panel .panel-container {
+  background: @white;
+
+  .panel-header {
+    border-bottom-color: fade(@black, 5%);
+    box-shadow: none;
+  }
+}
+
+.kibana-row {
+  .row-tab,
+  .row-close .row-button,
+  .controls-wrapper {
+    background: darken(#EAEFEF, 5%);
+    color: fade(@black, 50%);
+  }
+}
+
+// buttons
+.btn-primary {
+  background-color: @blue;
+  border-bottom-color: darken(@blue, 20%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@blue, 5%);
+  }
+}
+
+.btn-success {
+  background-color: @green;
+  border-bottom-color: darken(@green, 20%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active  {
+    background-color: lighten(@green, 5%);
+  }
+}
