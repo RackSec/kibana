@@ -1,0 +1,28 @@
+
+.modal-backdrop.fade.in {
+  opacity: .95;
+}
+
+.modal {
+  width: auto;
+  top: 35px !important; // override kibana's !importants, meh
+  left: 100px;
+  right: 100px;
+  background: lighten(@grey-dark, 1%);
+  box-shadow: none;
+  border-top: 0;
+
+  .close {
+    color: @white;
+  }
+
+  .modal-body {
+    padding-bottom: 20px;
+  }
+
+  .modal-footer {
+    background: none;
+    border-top: 0;
+  }
+
+}
