@@ -31,10 +31,6 @@
 .query-disabled {
   opacity: 0.3;
 }
-
-.form-search:hover .has-remove {
-  padding-left: 40px !important;
-}
 .remove-query {
   opacity: 0;
 }
