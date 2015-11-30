@@ -9,7 +9,7 @@
     </button>
   </div>
   <div ng-repeat="id in (unPinnedQueries = (dashboard.current.services.query.ids|pinnedQuery:false))" ng-class="{'short-query': unPinnedQueries.length>1}">
-    <form class="form-search" style="position:relative;margin:5px 0;" ng-submit="refresh()">
+    <form class="form-search" style="position:relative;margin:5px 0;" ng-submit="toggle_pin(id);querySrv.set({});">
       <span class="begin-query">
         <i class="pointer" ng-class="queryIcon(dashboard.current.services.query.list[id].type)" ng-show="dashboard.current.services.query.list[id].enable" data-unique="1" bs-popover="'app/panels/query/meta.html'" data-placement="bottomLeft" ng-style="{color: dashboard.current.services.query.list[id].color}"></i>
         <i class="pointer icon-circle-blank" ng-click="dashboard.current.services.query.list[id].enable=true;dashboard.refresh();" ng-hide="dashboard.current.services.query.list[id].enable" bs-tooltip="'Activate query'" ng-style="{color: dashboard.current.services.query.list[id].color}"></i>
@@ -20,7 +20,7 @@
       </span>
       <span class="end-query">
         <i class="icon-search pointer" ng-click="refresh()" ng-show="$last"></i>
-        <i class="icon-plus pointer" ng-click="querySrv.set({})" ng-show="$last"></i>
+        <i class="icon-plus pointer" ng-click="toggle_pin(id);querySrv.set({});" ng-show="$last"></i>
       </span>
     </form>
   </div>
