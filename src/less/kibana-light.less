@@ -137,6 +137,20 @@ input[type="color"],
   }
 }
 
+// Modals
+.modal-backdrop {
+  background: @white;
+}
+
+.modal {
+  background: darken(@white, 2%);
+  box-shadow: 0 0 3px rgba(0,0,0,.1);
+
+  .close {
+    color: @black;
+  }
+}
+
 // Pulldown panels
 .pulldown-panel {
   background: darken(@white, 5%);
