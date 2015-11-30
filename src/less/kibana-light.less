@@ -3,6 +3,8 @@
 // override some variables
 @green: #45B29D;
 @blue: #35B1FC;
+@blue-medium: #657886;
+@skyblue: #EAEFEF;
 @yellow: #FED532;
 @purple: #B87AC6;
 
@@ -13,17 +15,17 @@
 
 // Global
 body {
-  background: #EAEFEF;
-  color: #657886;
+  background: @skyblue;
+  color: @blue-medium;
 }
 
 .small-header {
-  color: #657886;
+  color: @blue-medium;
 }
 
 // brand
 .navbar .brand {
-  color: #657886;
+  color: @blue-medium;
 }
 
 
@@ -63,7 +65,7 @@ body {
   .row-tab,
   .row-close .row-button,
   .controls-wrapper {
-    background: darken(#EAEFEF, 5%);
+    background: darken(@skyblue, 5%);
     color: fade(@black, 50%);
 
     &:hover {
