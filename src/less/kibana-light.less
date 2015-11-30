@@ -150,3 +150,21 @@ input[type="color"],
     color: rgba(0, 0, 0, 0.5);
   }
 }
+
+// Filter box
+.filter-box {
+  background: darken(@skyblue, 10%);
+  color: fade(@black, 80%);
+
+  select {
+    color: @black;
+    background: @white;
+    box-shadow:  0 1px 2px fade(@black,20%) inset, 0px 1px 0 fade(@black, 5%);
+  }
+
+  input {
+    color: @black;
+    background: @white;
+    box-shadow:  0 1px 2px fade(@black,20%) inset, 0px 1px 0 fade(@black, 5%);
+  }
+}
