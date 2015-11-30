@@ -26,6 +26,10 @@ body {
 // Navbar
 .navbar .nav > li > a {
   color: fade(@black, 50%);
+
+  &:hover {
+    color: fade(@black, 90%);
+  }
 }
 
 .navbar .dropdown-toggle.timepicker-dropdown {
@@ -34,6 +38,11 @@ body {
 
 .navbar .timepicker-dropdown .timepicker-label {
   color: fade(@black, 50%);
+}
+
+.navbar .nav > li.dropdown.open > .dropdown-toggle {
+  background: none;
+  color: @black;
 }
 
 // Panels
@@ -52,6 +61,10 @@ body {
   .controls-wrapper {
     background: darken(#EAEFEF, 5%);
     color: fade(@black, 50%);
+
+    &:hover {
+      color: fade(@black, 90%);
+    }
   }
 }
 
@@ -77,5 +90,13 @@ body {
   &:active,
   .active  {
     background-color: lighten(@green, 5%);
+  }
+}
+
+.link {
+  color: @black;
+
+  &:hover {
+    color: @black;
   }
 }
