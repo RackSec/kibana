@@ -20,10 +20,7 @@
   <div class="mt-10">
     <h3 class="small-header mt-20">Your queries:</h3>
     <div class="inline-block" ng-repeat="id in dashboard.current.services.query.ids|pinnedQuery:true">
-      <span class="pointer badge pins query-box" ng-show="$first" ng-click="panel.pinned = !panel.pinned">
-        Pinned <i ng-class="{'icon-caret-right':panel.pinned,'icon-caret-left':!panel.pinned}"></i>
-      </span>
-      <span ng-show="panel.pinned" class="badge pinned query-box">
+      <span class="badge pinned query-box">
         <span class="query-box-left">
           <i class="icon-circle pointer"
             ng-show="dashboard.current.services.query.list[id].enable"
