@@ -1,0 +1,55 @@
+.editor-header {
+  border-bottom: 1px solid fade(@white, 20%);
+  margin-bottom: 20px;
+
+  h3, h3 + div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
+    color: fade(@white, 50%);
+  }
+
+  .nav {
+    margin-bottom: 0;
+  }
+
+  .nav li a {
+    display: block;
+    background: none;
+    color: @white;
+  }
+
+  .nav li.active a {
+    font-weight: bold;
+    background: none;
+    position: relative;
+  }
+
+  .nav li.active a:before {
+    content: "";
+    height: 2px;
+    background: @green;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -3px;
+  }
+
+  .nav li.active a:after {
+    content: "";
+    border-bottom: 6px solid @green;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    position: absolute;
+    left: 50%;
+    margin-left: -6px;
+    bottom: -3px;
+  }
+
+}

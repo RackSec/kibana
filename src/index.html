@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="css/timepicker.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" ng-href="css/bootstrap.{{dashboard.current.style||'dark'}}.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/kibana.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Light theme -->
+    <link rel="stylesheet" href="css/kibana-light.min.css" ng-if="dashboard.current.style == 'light'">
+
     <!-- load the root require context -->
     <script src="vendor/require/require.js"></script>
     <script src="app/components/require.config.js"></script>
@@ -45,8 +48,7 @@
             <li ng-repeat="pulldown in dashboard.current.pulldowns" ng-controller="PulldownCtrl" ng-show="pulldown.enable">
               <button class="top-row-close btn mr-10"
                 ng-class="[pulldownTabStyle($index), pulldown.collapse ? '' : 'open']"
-                ng-click="toggle_pulldown(pulldown);dismiss();"
-                bs-tooltip="'Toggle '+pulldown.type" data-placement="bottom">
+                ng-click="toggle_pulldown(pulldown);dismiss();">
                 <span class="small">{{pulldown.type}}</span>
                 <i class="small" ng-class="{'icon-caret-down':pulldown.collapse,'icon-caret-up':!pulldown.collapse}"></i>
                 <i class="small icon-star" ng-show="row.notice && pulldown.collapse"></i>
