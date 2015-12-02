@@ -9,7 +9,11 @@
   <fieldset>
     <select class="input-small" ng-model="dashboard.current.services.query.list[id].type" ng-change="typeChange(dashboard.current.services.query.list[id])">
       <option ng-repeat="type in queryTypes">{{type}}</option>
-    </select> &nbsp<a href="" class="small" ng-click="queryHelp(dashboard.current.services.query.list[id].type)"> About the {{dashboard.current.services.query.list[id].type}} query</a>
+    </select>
+    <a href="" class="small link mb-10 ml-10 inline-block valign-middle"
+      ng-click="queryHelp(dashboard.current.services.query.list[id].type)">
+      About the {{dashboard.current.services.query.list[id].type}} query
+    </a>
 
     <hr class="small">
 
