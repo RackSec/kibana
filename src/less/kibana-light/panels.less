@@ -1,0 +1,33 @@
+// Panels
+.panel .panel-container {
+  background: @white;
+
+  .panel-header {
+    border-bottom-color: fade(@black, 5%);
+    box-shadow: none;
+  }
+}
+
+.kibana-row {
+  .row-tab,
+  .row-close .row-button,
+  .controls-wrapper {
+    background: darken(@skyblue, 5%);
+    color: fade(@black, 50%);
+
+    &:hover {
+      color: fade(@black, 90%);
+    }
+  }
+
+  .row-close {
+    background: darken(@skyblue, 5%);
+  }
+}
+
+// Pulldown panels
+.pulldown-panel {
+  background: darken(@white, 5%);
+  border-top: 1px solid darken(@white, 10%);
+  border-bottom: 1px solid darken(@white, 10%);
+}
