@@ -1,0 +1,52 @@
+// buttons
+.btn {
+  background: darken(@white, 5%);
+}
+
+.btn-primary {
+  background-color: @blue;
+  border-bottom-color: darken(@blue, 20%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active {
+    background-color: lighten(@blue, 5%);
+  }
+}
+
+.btn-success {
+  background-color: @green;
+  border-bottom-color: darken(@green, 20%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  .active  {
+    background-color: lighten(@green, 5%);
+  }
+}
+
+.btn-danger {
+  background-color: @red;
+}
+
+.btn-info {
+  background-color: @purple;
+}
+
+.btn-warning {
+  background-color: @orange;
+}
+
+.btn-inverse {
+  background-color: @black;
+}
+
+.link {
+  color: @black;
+
+  &:hover {
+    color: @black;
+  }
+}
