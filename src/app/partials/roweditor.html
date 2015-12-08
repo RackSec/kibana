@@ -48,7 +48,9 @@
     </div>
   </div>
   <div class="row-fluid" ng-if="editor.index == 2">
-    <h4 ng-show="_.isUndefined(panel.type)">Select Panel Type</h4>
+    <h4 class="mb-20 mt-0" ng-show="_.isUndefined(panel.type)">
+      Add new panel to <strong>{{row.title}}</strong> row
+    </h4>
     <button class="btn btn-small btn-primary mb-10"
             ng-show="!(_.isUndefined(panel.type))"
             ng-click="panel.type = undefined">
