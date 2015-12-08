@@ -51,7 +51,7 @@
     <h4>Select Panel Type</h4>
     <ul class="thumbnails mb-0" ng-show="_.isUndefined(panel.type)">
       <li class="span3 panel-thumb" ng-repeat="panelType in dashboard.availablePanels|stringSort">
-        <nil panel-thumb="{{panelType}}"></nil>
+        <nil panel-thumb="{{panelType}}" ng-click="panel.type = panelType"></nil>
       </li>
     </ul>
     <div ng-show="!(_.isUndefined(panel.type))">
