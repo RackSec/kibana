@@ -1,7 +1,11 @@
 
 .panel-thumb {
-  overflow: hidden;
   position: relative;
+
+  &:hover {
+    box-shadow: 0 0 5px rgba(255,255,255,.8);
+    cursor: pointer;
+  }
 
   &:after {
     content: "";
@@ -29,12 +33,15 @@
 
   p {
     font-size: 13px;
+    padding-bottom: 15px;
+    height: 78px;
+    overflow-y: auto;
   }
 
   .image-wrapper {
     height: 100px;
     background: darken(@grey-dark, 5%);
-    margin: -10px -10px 0;
+    margin: -5px -10px 0;
   }
 
   &:nth-child(4n+1) {
