@@ -235,6 +235,7 @@ function (angular, $, kbn, _, config, moment, Modernizr) {
 
       // Take out any that we're not allowed to add from the gui.
       self.availablePanels = _.difference(self.availablePanels,config.hidden_panels);
+      console.log(self.availablePanels)
 
       return true;
     };
