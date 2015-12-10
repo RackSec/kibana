@@ -1,5 +1,6 @@
 define([
   './addPanel',
+  './panelThumb',
   './arrayJoin',
   './dashUpload',
   './kibanaPanel',

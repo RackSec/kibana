@@ -130,4 +130,13 @@ define([
     };
   });
 
+  module.filter('capitalizeFirstLetter', function() {
+    return function(input) {
+      if(!(_.isUndefined(input))) {
+        input = input.toLowerCase();
+        return input.substring(0,1).toUpperCase()+input.substring(1);
+      }
+    }
+  })
+
 });

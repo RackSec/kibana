@@ -1,6 +1,13 @@
   <div class="editor-row">
-    <div class="section">
-      <strong>{{panelMeta.status}}</strong> // <span ng-bind-html="panelMeta.description"></span>
+    <div class="media-panel-thumb">
+      <div class="image-wrapper {{panel.type}}-thumb small"></div>
+      <div class="body">
+        <h3 class="title mb-0 mt-0">
+          {{panel.type | capitalizeFirstLetter}}
+          <small>{{panelMeta.status}}</small>
+        </h3>
+        <p ng-bind-html="panelMeta.description"></p>
+      </div>
     </div>
   </div>
   <div class="editor-row">

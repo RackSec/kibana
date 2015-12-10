@@ -1,0 +1,199 @@
+
+.panel-thumb {
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 0 5px rgba(255,255,255,.8);
+    cursor: pointer;
+  }
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(bottom, @grey, rgba(0,0,0,0));
+    background: -moz-linear-gradient(bottom, @grey, rgba(0,0,0,0));
+    background: -webkit-linear-gradient(bottom, @grey, rgba(0,0,0,0));
+    position: absolute;
+    bottom: 0;
+  }
+
+  .thumbnail {
+    height: 220px;
+    background: @grey;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0;
+  }
+
+  .title {
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 13px;
+    padding-bottom: 15px;
+    height: 78px;
+    overflow-y: auto;
+  }
+
+  .image-wrapper {
+    height: 100px;
+    background-color: darken(@grey-dark, 5%);
+    margin: -5px -10px 0;
+  }
+
+  &:nth-child(4n+1) {
+    margin-left: 0;
+  }
+}
+
+// on top of panel's editor
+.media-panel-thumb {
+  position: relative;
+  min-height: 100px;
+  margin-bottom: 20px;
+
+  .title {
+    padding-top: 5px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .image-wrapper {
+    background-color: darken(@grey-dark, 5%);
+    width: 180px;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+  }
+
+  .body {
+    padding-left: 195px;
+    background: @grey;
+    min-height: 100px;
+  }
+
+}
+
+// Load thumbnail images
+.bettermap-thumb {
+  .retina-image('/img/bettermap_thumb', 'png', no-repeat, 185px, 93px);
+  background-position: center center;
+
+  &.small {
+    background-size: 128px 64px;
+    .retina-image('/img/bettermap_thumb', 'png', no-repeat, 128px, 64px);
+  }
+}
+
+.column-thumb {
+  .retina-image('/img/column_thumb', 'png', no-repeat, 151px, 83px);
+  background-position: center center;
+
+  &.small {
+    background-size: 110px 60px;
+    .retina-image('/img/column_thumb', 'png', no-repeat, 110px, 60px);
+  }
+}
+
+.goal-thumb {
+  .retina-image('/img/goal_thumb', 'png', no-repeat, 88px, 88px);
+  background-position: center center;
+
+  &.small {
+    background-size: 64px 64px;
+    .retina-image('/img/goal_thumb', 'png', no-repeat, 64px, 64px);
+  }
+}
+
+.histogram-thumb {
+  .retina-image('/img/histogram_thumb', 'png', no-repeat, 129px, 80px);
+  background-position: center center;
+
+  &.small {
+    background-size: 93px 57px;
+    .retina-image('/img/histogram_thumb', 'png', no-repeat, 93px, 57px);
+  }
+}
+
+.hits-thumb {
+  .retina-image('/img/hits_thumb', 'png', no-repeat, 129px, 80px);
+  background-position: center center;
+
+  &.small {
+    background-size: 93px 57px;
+    .retina-image('/img/hits_thumb', 'png', no-repeat, 93px, 57px);
+  }
+}
+
+.map-thumb {
+  .retina-image('/img/map_thumb', 'png', no-repeat, 185px, 93px);
+  background-position: center center;
+
+  &.small {
+    background-size: 128px 64px;
+    .retina-image('/img/map_thumb', 'png', no-repeat, 128px, 64px);
+  }
+}
+
+.sparklines-thumb {
+  .retina-image('/img/sparklines_thumb', 'png', no-repeat, 158px, 65px);
+  background-position: center center;
+
+  &.small {
+    background-size: 120px 64px;
+    .retina-image('/img/sparklines_thumb', 'png', no-repeat, 128px, 49px);
+  }
+}
+
+.stats-thumb {
+  .retina-image('/img/stats_thumb', 'png', no-repeat, 193px, 76px);
+  background-position: center center;
+
+  &.small {
+    background-size: 135px 53px;
+    .retina-image('/img/stats_thumb', 'png', no-repeat, 135px, 53px);
+  }
+}
+
+.table-thumb {
+  .retina-image('/img/table_thumb', 'png', no-repeat, 139px, 51px);
+  background-position: center center;
+
+  &.small {
+    background-size: 110px 40px;
+    .retina-image('/img/table_thumb', 'png', no-repeat, 110px, 40px);
+  }
+}
+
+.terms-thumb {
+  .retina-image('/img/terms_thumb', 'png', no-repeat, 190px, 38px);
+  background-position: center center;
+
+  &.small {
+    background-size: 135px 27px;
+    .retina-image('/img/terms_thumb', 'png', no-repeat, 135px, 27px);
+  }
+}
+
+.text-thumb {
+  .retina-image('/img/text_thumb', 'png', no-repeat, 177px, 67px);
+  background-position: center center;
+
+  &.small {
+    background-size: 128px 48px;
+    .retina-image('/img/text_thumb', 'png', no-repeat, 128px, 48px);
+  }
+}
+
+.trends-thumb {
+  .retina-image('/img/trends_thumb', 'png', no-repeat, 52px, 65px);
+  background-position: center center;
+
+  &.small {
+    background-size: 44px 54px;
+    .retina-image('/img/trends_thumb', 'png', no-repeat, 44px, 54px);
+  }
+}
