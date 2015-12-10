@@ -62,6 +62,7 @@ define([
 
     $scope.toggle_pin = function(id) {
       dashboard.current.services.query.list[id].pin = dashboard.current.services.query.list[id].pin ? false : true;
+      querySrv.set({});
     };
 
     $scope.queryIcon = function(type) {
