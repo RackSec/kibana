@@ -671,7 +671,7 @@ function (angular, app, $, _, kbn, moment, timeSeries, numeral) {
                 backgroundColor: null,
                 borderWidth: 0,
                 hoverable: true,
-                color: '#c8c8c8'
+                color: dashboard.current.style == 'light' ? "#8FA2B0" : '#c8c8c8'
               }
             };
 
