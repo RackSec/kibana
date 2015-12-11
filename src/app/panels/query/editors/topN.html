@@ -1,11 +1,9 @@
   <fieldset>
-    <label class="small">Field</label><br>
+    <label class="small">Field</label>
     <input ng-model="dashboard.current.services.query.list[id].field" type="text" bs-typeahead="fields.list" placeholder="Field">
-    <p>
-    <label class="small">Count</label><br>
+    <label class="small">Count</label>
     <input ng-model="dashboard.current.services.query.list[id].size" type="number">
-    <p>
-    <label class="small">Union</label><br>
+    <label class="small">Union</label>
       <select class="input-small" ng-model="dashboard.current.services.query.list[id].union">
       <option ng-repeat="mode in ['none','AND','OR']">{{mode}}</option>
     </select>
